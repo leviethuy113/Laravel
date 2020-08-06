@@ -35,7 +35,16 @@ const Sidebar = (props) => {
       {/* Nav Item - Pages Collapse Menu */}
       <li className="nav-item">
         <Link className="nav-link collapsed" to="/admin/categories">
-          <span>Danh mục</span>
+          <span>Danh mục sản phẩm</span>
+        </Link>
+        <Link className="nav-link collapsed" to="/admin/products">
+          <span>Sản phẩm</span>
+        </Link>
+        <Link className="nav-link collapsed" to="/admin/cate-post">
+          <span>Danh mục bài viết</span>
+        </Link>
+        <Link className="nav-link collapsed" to="/admin/posts">
+          <span>Bài viết</span>
         </Link>
         <Link className="nav-link collapsed" to="/admin/products">
           <span>Sản phẩm</span>

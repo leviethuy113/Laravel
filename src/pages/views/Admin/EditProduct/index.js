@@ -101,7 +101,7 @@ const EditProduct = ({ onAdd, products, categories }) => {
               ref={register({ required: true })}
             >
               {categories.map(({ id, name }, index) => (
-                <option active key={index} value={slug.id}>
+                <option active key={index} value={id}>
                   {name}
                 </option>
               ))}

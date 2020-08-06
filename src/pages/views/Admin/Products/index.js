@@ -6,10 +6,10 @@ const Products = ({ products, onRemove, categories }) => {
   function removeElement(id) {
     onRemove(id);
   }
-  const slug = categories.find(
-    (categories) => categories.id === products.category
-  );
-  console.log(slug);
+  // const slug = categories.find(
+  //   (categories) => categories.id === products.category
+  // );
+  // console.log(slug);
   return (
     <div className="card shadow mb-4">
       <div className="card-header py-3">

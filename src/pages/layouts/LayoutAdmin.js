@@ -7,12 +7,12 @@ import Categories from "../../pages/views/Admin/Categories";
 import DetailProduct from "../../pages/views/Admin/DetailProduct";
 import AddForm from "../../pages/views/Admin/AddForm";
 import EditProduct from "../../pages/views/Admin/EditProduct";
-import dataFake from "../../dataFake";
 import "../../assets/css/admin/sb-admin-2.min.scss";
 import "../../assets/css/admin/main.scss";
 import axios from "axios";
 import productApi from "../../api/productApi";
 import cateApi from "../../api/cateApi";
+import catepostApi from "../../api/catepostApi";
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,10 +22,19 @@ import {
 } from "react-router-dom";
 import AddCategory from "../views/Admin/AddCategory";
 import EditCategory from "../views/Admin/EditCategory";
+import CatePost from "../../pages/views/Admin/CatePost";
+import AddCatePost from "../../pages/views/Admin/AddCatePost";
+
+//post
+import Posts from "../../pages/views/Admin/Posts";
+import PostsApi from "../../api/PostsApi";
+import AddPosts from "../../pages/views/Admin/AddPosts.js";
 
 export default ({ children }) => {
   const [products, setproducts] = useState([]);
   const [categories, setcategories] = useState([]);
+  const [cateposts, setcateposts] = useState([]);
+  const [posts, setposts] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -45,6 +54,16 @@ export default ({ children }) => {
       } catch (error) {}
     };
     getCategories();
+  }, []);
+
+  useEffect(() => {
+    const getCateposts = async () => {
+      try {
+        const { data } = await catepostApi.getAll();
+        setcateposts(data);
+      } catch (error) {}
+    };
+    getCateposts();
   }, []);
 
   console.log(products);
@@ -97,6 +116,28 @@ export default ({ children }) => {
     cateApi.remove(id);
     alert("Xóa danh mục thành công");
   };
+  // danh mục bài viết
+  console.log(cateposts);
+  const Addcatepost = (catepost) => {
+    setcateposts([...cateposts, catepost]);
+    catepostApi.create(catepost);
+  };
+
+  //bai viet
+  const removePosts = (id) => {
+    console.log(id);
+    const newData = posts.filter((posts) => posts.id !== id);
+    console.log(newData);
+    setposts(newData);
+    PostsApi.remove(id);
+    alert("Bạn chắc chắn muốn xóa sản phẩm này");
+  };
+
+  const Addposts = (post) => {
+    setposts([...posts, post]);
+    PostsApi.create(post);
+  };
+
   return (
     <div className="admin-page">
       <Router>
@@ -144,6 +185,20 @@ export default ({ children }) => {
                       categories={categories}
                       onAdd={onUpdateCategory}
                     />
+                  </Route>
+
+                  <Route path="/admin/cate-post">
+                    <CatePost cateposts={cateposts} onRemove={removeProduct} />
+                  </Route>
+                  <Route path="/admin/add-catepost">
+                    <AddCatePost onAdd={Addcatepost} />
+                  </Route>
+
+                  <Route path="/admin/posts">
+                    <Posts posts={posts} onRemove={removePosts} />
+                  </Route>
+                  <Route path="/admin/add-posts">
+                    <AddPosts onAdd={Addposts} />
                   </Route>
                 </Switch>
               </div>

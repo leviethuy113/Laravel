@@ -1,24 +1,6 @@
 {
-  "categories": [
-    {
-      "id": "65c72f6bl",
-      "name": "Rolex3444",
-      "detail": "abc"
-    },
-    {
-      "id": "ky1e5udzg",
-      "name": "huy le",
-      "detail": "abc"
-    }
-  ],
+  "categories": [],
   "products": [
-    {
-      "id": "ula9l07es",
-      "name": "Rolex3",
-      "price": "111111111",
-      "image": "http://lorempixel.com/640/480/animals",
-      "category": "65c72f6bl"
-    },
     {
       "id": "dj3p2bnr6",
       "name": "huy le",
