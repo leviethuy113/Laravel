@@ -29,39 +29,43 @@ const Products = ({ products, onRemove, categories }) => {
                 <th scope="col">Ảnh</th>
                 <th scope="col">Giá</th>
                 <th scope="col">Danh mục</th>
+                <th scope="col">Trạng thái</th>
                 <th scope="col">Tùy chọn</th>
               </tr>
             </thead>
             <tbody>
-              {products.map(({ id, name, image, price, category }, index) => (
-                <tr id={"row-" + id} key={index}>
-                  <th scope="row">{index + 1}</th>
-                  <td>
-                    <Link to={`/admin/detail-product/${id}`}>{name}</Link>
-                  </td>
-                  <td>
-                    <img src={image} alt="" width="80" />
-                  </td>
-                  <td>{price}</td>
-                  <td>{category}</td>
-                  <td>
-                    <Link
-                      to={`/admin/edit-product/${id}`}
-                      className="btn btn-success"
-                    >
-                      Cập nhật
-                    </Link>{" "}
-                    &nbsp;
-                    <button
-                      onClick={() => removeElement(id)}
-                      type=" button"
-                      className="btn btn-danger"
-                    >
-                      XÓA
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {products.map(
+                ({ id, name, image, price, category, status }, index) => (
+                  <tr id={"row-" + id} key={index}>
+                    <th scope="row">{index + 1}</th>
+                    <td>
+                      <Link to={`/admin/detail-product/${id}`}>{name}</Link>
+                    </td>
+                    <td>
+                      <img src={image} alt="" width="70" height="80" />
+                    </td>
+                    <td>{price}</td>
+                    <td>{category}</td>
+                    <td>{status}</td>
+                    <td>
+                      <Link
+                        to={`/admin/edit-product/${id}`}
+                        className="btn btn-success"
+                      >
+                        Cập nhật
+                      </Link>{" "}
+                      &nbsp;
+                      <button
+                        onClick={() => removeElement(id)}
+                        type=" button"
+                        className="btn btn-danger"
+                      >
+                        XÓA
+                      </button>
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
           </table>
         </div>

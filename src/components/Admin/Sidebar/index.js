@@ -16,14 +16,15 @@ const Sidebar = (props) => {
         <div className="sidebar-brand-icon rotate-n-15">
           <i className="fas fa-laugh-wink" />
         </div>
-        <div className="sidebar-brand-text mx-3">
-          <Link to="/home">Admin</Link>
-        </div>
+        <div className="nav-link"></div>
       </a>
       {/* Divider */}
       <hr className="sidebar-divider my-0" />
       {/* Nav Item - Dashboard */}
       <li className="nav-item">
+        <Link className="nav-link" to="/">
+          <span>View Home</span>
+        </Link>
         <Link className="nav-link" to="/admin/">
           <span>Tổng quan</span>
         </Link>
@@ -46,9 +47,10 @@ const Sidebar = (props) => {
         <Link className="nav-link collapsed" to="/admin/posts">
           <span>Bài viết</span>
         </Link>
-        <Link className="nav-link collapsed" to="/admin/products">
-          <span>Sản phẩm</span>
+        <Link className="nav-link collapsed" to="/admin/contact">
+          <span>Contact</span>
         </Link>
+
         <div
           id="collapseTwo"
           className="collapse"

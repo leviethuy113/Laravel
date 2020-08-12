@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const Home = ({ products }) => {
   return (
@@ -40,30 +40,40 @@ const Home = ({ products }) => {
               </div>
             </div>
             <div className="row auctions-entry">
-              {products.map(({ id, name, image, price, detail }, index) => (
-                <div className="col-6 col-md-4 col-lg-3">
-                  <div className="item">
-                    <div>
-                      <strong className="price">${price}</strong>
-                      <a href="item-single.html">
-                        <img src={image} alt="Image" className="img-fluid" />
-                      </a>
-                    </div>
-                    <div className="p-4">
-                      <h3>
-                        <a href="item-single.html">{name}</a>
-                      </h3>
-                      <div className="d-flex mb-2">
-                        <span>Shoes</span>
-                        <span className="ml-auto">4 bids</span>
+              {products.map(
+                ({ id, name, image, price, price_sale, detail }, index) => (
+                  <div className="col-6 col-md-4 col-lg-3">
+                    <div className="item">
+                      <div>
+                        <strong className="price">${price_sale}</strong>
+                        <Link to={`/detail/${id}`}>
+                          <a>
+                            <img
+                              src={image}
+                              alt="Image"
+                              className="img-fluid"
+                            />
+                          </a>
+                        </Link>
                       </div>
-                      <a href="item-single.html" className="btn btn-bid">
-                        Submit a Bid
-                      </a>
+                      <div className="p-4">
+                        <h3>
+                          <Link to={`/detail/${id}`}>
+                            <a>{name}</a>
+                          </Link>
+                        </h3>
+                        <div className="d-flex mb-2">
+                          <span>Shoes</span>
+                          <span className="ml-auto">4 bids</span>
+                        </div>
+                        <a href="item-single.html" className="btn btn-bid">
+                          Submit a Bid
+                        </a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                )
+              )}
             </div>
           </div>
         </div>

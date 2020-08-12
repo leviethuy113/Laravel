@@ -15,7 +15,8 @@ const AddCatePost = ({ onAdd }) => {
     };
     console.log(newData);
     onAdd(newData);
-    // alert("Thêm danh mục bài viết thành công");
+    history.push("/admin/cate-post");
+    alert("Thêm danh mục sản phẩm thành công");
   };
 
   return (
@@ -35,15 +36,15 @@ const AddCatePost = ({ onAdd }) => {
                 type="text"
                 placeholder=""
                 name="name"
-                ref={register({ required: true, pattern: /^\S{1}.{0,24}$/i })}
+                ref={register({ required: true, pattern: /^\S{1}.{0,50}$/i })}
               />
               <small id="imageHelp" className="form-text text-danger">
                 {errors.name && errors.name.type === "required" && (
-                  <span>Không để trống tên sản phẩm </span>
+                  <span>Không để trống tên danh mục </span>
                 )}
                 {errors.name && errors.name.type === "pattern" && (
                   <span>
-                    Tên danh mục không bắt đầu bằng dấu cách và ít hơn 25 kí tự{" "}
+                    Tên danh mục không bắt đầu bằng dấu cách và ít hơn 50 kí tự{" "}
                   </span>
                 )}
               </small>
@@ -58,10 +59,10 @@ const AddCatePost = ({ onAdd }) => {
                 ref={register({ required: true, pattern: /^\S{1}.{0,100}$/i })}
               />
               <small id="imageHelp" className="form-text text-danger">
-                {errors.price && errors.content.type === "required" && (
+                {errors.content && errors.content.type === "required" && (
                   <span>Không để trống tiêu đề danh mục</span>
                 )}
-                {errors.price && errors.content.type === "pattern" && (
+                {errors.content && errors.content.type === "pattern" && (
                   <span>Tiêu đề gồm ít hơn 100 kí tự</span>
                 )}
               </small>
@@ -70,7 +71,7 @@ const AddCatePost = ({ onAdd }) => {
             <button type="submit" className="btn btn-primary mr-2">
               Thêm
             </button>
-            <Link to="/admin/products">
+            <Link to="/admin/cate-post">
               <a className="btn btn-danger text-white">Trở lại</a>
             </Link>
           </form>

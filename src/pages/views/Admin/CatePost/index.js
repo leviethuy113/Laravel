@@ -11,11 +11,13 @@ const CatePost = ({ cateposts, onRemove }) => {
     <div>
       <div className="card shadow mb-4">
         <div className="card-header py-3">
-          <h6 className="m-0 font-weight-bold text-primary">Sản phẩm</h6>
+          <h6 className="m-0 font-weight-bold text-primary">
+            Danh mục bài viết
+          </h6>
         </div>
         <div className="card-body">
-          <Link to="/admin/add-product">
-            <button className="btn btn-primary">Thêm sản phẩm</button>
+          <Link to="/admin/add-catepost">
+            <button className="btn btn-primary">Thêm danh mục</button>
           </Link>
 
           <div className="table-responsive mt-3">
@@ -36,7 +38,7 @@ const CatePost = ({ cateposts, onRemove }) => {
                     <td>{content}</td>
                     <td>
                       <Link
-                        to={`/admin/edit-product/${id}`}
+                        to={`/admin/edit-catepost/${id}`}
                         className="btn btn-success"
                       >
                         Cập nhật

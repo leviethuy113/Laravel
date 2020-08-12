@@ -23,18 +23,22 @@ const Posts = ({ posts, onRemove }) => {
               <tr>
                 <th scope="col">STT</th>
                 <th scope="col">Tiêu đề </th>
-                <th scope="col">Nội dung </th>
+                <td scope="col">Ảnh</td>
                 <th scope="col">Danh mục</th>
+                <th scope="col">Ngày phát hành</th>
                 <th scope="col">Tùy chọn</th>
               </tr>
             </thead>
             <tbody>
-              {posts.map(({ id, title, content, category }, index) => (
+              {posts.map(({ id, image, title, catepost, newTime }, index) => (
                 <tr id={"row-" + id} key={index}>
                   <th scope="row">{index + 1}</th>
                   <td>{title}</td>
-                  <td>{content}</td>
-                  <td>{category}</td>
+                  <td>
+                    <img src={image} width="80"></img>
+                  </td>
+                  <td>{catepost}</td>
+                  <td>{newTime}</td>
                   <td>
                     <Link
                       to={`/admin/edit-posts/${id}`}

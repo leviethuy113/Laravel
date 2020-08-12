@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Header = (props) => {
+const Header = ({ cateposts }) => {
+  console.log(cateposts);
   return (
     <div>
       <div>
@@ -25,7 +26,7 @@ const Header = (props) => {
                 >
                   <ul className="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                     <li className="">
-                      <Link to="/home">
+                      <Link to="/">
                         <a className="nav-link text-left">Home</a>
                       </Link>
                     </li>
@@ -40,25 +41,22 @@ const Header = (props) => {
                       </Link>
                     </li>
                     <li className="has-children">
-                      <a href="services.html" className="nav-link text-left">
-                        Services
-                      </a>
+                      <Link to="/blog">
+                        <a href="services.html" className="nav-link text-left">
+                          Blog
+                        </a>
+                      </Link>
                       <ul className="dropdown">
-                        <li>
-                          <a href="services.html">Sell Items</a>
-                        </li>
-                        <li>
-                          <a href="services.html">Buy Items</a>
-                        </li>
-                        <li>
-                          <a href="services.html">Submit a Bid</a>
-                        </li>
+                        {cateposts.map(({ id, name, content }, index) => (
+                          <li key={index}>
+                            <a href="">
+                              <Link to={`/posts/${name}`}>{name}</Link>
+                            </a>
+                          </li>
+                        ))}
                       </ul>
                     </li>
-                    <li>
-                      <Link></Link>
-                      <a className="nav-link text-left">Blog</a>
-                    </li>
+
                     <li>
                       <Link to="/about">
                         <a className="nav-link text-left">About</a>

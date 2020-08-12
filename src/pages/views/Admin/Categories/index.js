@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import parse from "html-react-parser";
 
-const Categories = ({ categories, onRemove }) => {
+const Categories = ({ categories, onRemove, products }) => {
   function removeElement(id) {
     onRemove(id);
   }
+  // const product = products.filter((product) => product.category === id);
+
   return (
     <div>
       <div className="card shadow mb-4">
@@ -19,7 +22,7 @@ const Categories = ({ categories, onRemove }) => {
 
           <div className="table-responsive mt-3">
             <table
-              className="table table-bordered"
+              className="table table-striped"
               id="dataTable"
               width="100%"
               cellSpacing={0}
@@ -28,18 +31,22 @@ const Categories = ({ categories, onRemove }) => {
                 <tr>
                   <th scope="col">STT</th>
                   <th scope="col">Tên</th>
+                  <th scope="col">Ảnh</th>
                   <th scope="col">Mô tả</th>
                   <th scope="col">Tùy chọn</th>
                 </tr>
               </thead>
               <tbody>
-                {categories.map(({ id, name, detail }, index) => (
+                {categories.map(({ id, name, image, text }, index) => (
                   <tr id={"row-" + id} key={index}>
                     <th scope="row">{index + 1}</th>
                     <td>
                       <Link to={`/admin/detail-product/${id}`}>{name}</Link>
                     </td>
-                    <td>{detail}</td>
+                    <td>
+                      <img src={image} width="80"></img>
+                    </td>
+                    <td>{parse(text)}</td>
                     <td>
                       <Link
                         to={`/admin/edit-category/${id}`}

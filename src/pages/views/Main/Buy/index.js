@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-const Buy = (props) => {
+const Buy = ({ products, categories }) => {
   return (
     <div>
       <div>
@@ -32,33 +32,17 @@ const Buy = (props) => {
             <div className="row">
               <div className="col-md-3">
                 <div className="side-box mb-5">
-                  <h3>Categories</h3>
+                  <Link to="/buy">
+                    <h3>Categories</h3>
+                  </Link>
                   <ul className="list-unstyled auction-categories">
-                    <li>
-                      <a href="#">
-                        Shoes <span>2109</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        Electronics <span>102</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        Clothing <span>392</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        Watches <span>291</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        Accessories <span>391</span>
-                      </a>
-                    </li>
+                    {categories.map(({ id, name }, index) => (
+                      <li>
+                        <a href="">
+                          <Link to={`product/${name}`}>{name}</Link>{" "}
+                        </a>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className="side-box">
@@ -209,240 +193,40 @@ const Buy = (props) => {
               </div>
               <div className="col-md-9">
                 <div className="row auctions-entry">
-                  <div className="col-6 col-md-4 col-lg-4">
-                    <div className="item">
-                      <div>
-                        <strong className="price">$95</strong>
-                        <a href="item-single.html">
-                          <img
-                            src="/dist/images/product_1.jpg"
-                            alt="Image"
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="p-4">
-                        <h3>
-                          <a href="item-single.html">Pinky Shoes</a>
-                        </h3>
-                        <div className="d-flex mb-2">
-                          <span>Shoes</span>
-                          <span className="ml-auto">4 bids</span>
+                  {products.map(
+                    ({ id, name, image, price, detail, category }, index) => (
+                      <div className="col-6 col-md-4 col-lg-4">
+                        <div className="item">
+                          <div>
+                            <strong className="price">${price}</strong>
+                            <Link to={`/detail/${id}`}>
+                              <a>
+                                <img
+                                  src={image}
+                                  alt="Image"
+                                  className="img-fluid"
+                                />
+                              </a>
+                            </Link>
+                          </div>
+                          <div className="p-4">
+                            <h3>
+                              <Link to={`/detail/${id}`}>
+                                <a>{name}</a>
+                              </Link>
+                            </h3>
+                            <div className="d-flex mb-2">
+                              <span>{category}</span>
+                              <span className="ml-auto">4 bids</span>
+                            </div>
+                            <a href="" className="btn btn-bid">
+                              Submit a Bid
+                            </a>
+                          </div>
                         </div>
-                        <a href="item-single.html" className="btn btn-bid">
-                          Submit a Bid
-                        </a>
                       </div>
-                    </div>
-                  </div>
-                  <div className="col-6 col-md-4 col-lg-4">
-                    <div className="item">
-                      <div>
-                        <strong className="price">$30</strong>
-                        <a href="item-single.html">
-                          <img
-                            src="/dist/images/product_2.jpg"
-                            alt="Image"
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="p-4">
-                        <h3>
-                          <a href="item-single.html">Eye Glass Eye Protector</a>
-                        </h3>
-                        <div className="d-flex mb-2">
-                          <span>Eye Glasses</span>
-                          <span className="ml-auto">10 bids</span>
-                        </div>
-                        <a href="item-single.html" className="btn btn-bid">
-                          Submit a Bid
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 col-md-4 col-lg-4">
-                    <div className="item">
-                      <div>
-                        <strong className="price">$199</strong>
-                        <a href="item-single.html">
-                          <img
-                            src="/dist/images/product_3.jpg"
-                            alt="Image"
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="p-4">
-                        <h3>
-                          <a href="item-single.html">Black Leather Jacket</a>
-                        </h3>
-                        <div className="d-flex mb-2">
-                          <span>Clothing</span>
-                          <span className="ml-auto">24 bids</span>
-                        </div>
-                        <a href="item-single.html" className="btn btn-bid">
-                          Submit a Bid
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 col-md-4 col-lg-4">
-                    <div className="item">
-                      <div>
-                        <strong className="price">$1,999</strong>
-                        <a href="item-single.html">
-                          <img
-                            src="/dist/images/product_4.jpg"
-                            alt="Image"
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="p-4">
-                        <h3>
-                          <a href="item-single.html">MacBook 15-Inch Laptop</a>
-                        </h3>
-                        <div className="d-flex mb-2">
-                          <span>Clothing</span>
-                          <span className="ml-auto">224 bids</span>
-                        </div>
-                        <a href="item-single.html" className="btn btn-bid">
-                          Submit a Bid
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 col-md-4 col-lg-4">
-                    <div className="item">
-                      <div>
-                        <strong className="price">$777</strong>
-                        <a href="item-single.html">
-                          <img
-                            src="/dist/images/product_5.jpg"
-                            alt="Image"
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="p-4">
-                        <h3>
-                          <a href="item-single.html">iPad</a>
-                        </h3>
-                        <div className="d-flex mb-2">
-                          <span>Electronics</span>
-                          <span className="ml-auto">11 bids</span>
-                        </div>
-                        <a href="item-single.html" className="btn btn-bid">
-                          Submit a Bid
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 col-md-4 col-lg-4">
-                    <div className="item">
-                      <div>
-                        <strong className="price">$78</strong>
-                        <a href="item-single.html">
-                          <img
-                            src="/dist/images/product_6.jpg"
-                            alt="Image"
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="p-4">
-                        <h3>
-                          <a href="item-single.html">Shoe Sneakers</a>
-                        </h3>
-                        <div className="d-flex mb-2">
-                          <span>Shoes</span>
-                          <span className="ml-auto">4 bids</span>
-                        </div>
-                        <a href="item-single.html" className="btn btn-bid">
-                          Submit a Bid
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 col-md-4 col-lg-4">
-                    <div className="item">
-                      <div>
-                        <strong className="price">$1,999</strong>
-                        <a href="item-single.html">
-                          <img
-                            src="/dist/images/product_7.jpg"
-                            alt="Image"
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="p-4">
-                        <h3>
-                          <a href="item-single.html">iMac</a>
-                        </h3>
-                        <div className="d-flex mb-2">
-                          <span>Electronics</span>
-                          <span className="ml-auto">293 bids</span>
-                        </div>
-                        <a href="item-single.html" className="btn btn-bid">
-                          Submit a Bid
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 col-md-4 col-lg-4">
-                    <div className="item">
-                      <div>
-                        <strong className="price">$450</strong>
-                        <a href="item-single.html">
-                          <img
-                            src="/dist/images/product_8.jpg"
-                            alt="Image"
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="p-4">
-                        <h3>
-                          <a href="item-single.html">iWatch</a>
-                        </h3>
-                        <div className="d-flex mb-2">
-                          <span>Electronics</span>
-                          <span className="ml-auto">123 bids</span>
-                        </div>
-                        <a href="item-single.html" className="btn btn-bid">
-                          Submit a Bid
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-6 col-md-4 col-lg-4">
-                    <div className="item">
-                      <div>
-                        <strong className="price">$30</strong>
-                        <a href="item-single.html">
-                          <img
-                            src="/dist/images/product_2.jpg"
-                            alt="Image"
-                            className="img-fluid"
-                          />
-                        </a>
-                      </div>
-                      <div className="p-4">
-                        <h3>
-                          <a href="item-single.html">Eye Glass Eye Protector</a>
-                        </h3>
-                        <div className="d-flex mb-2">
-                          <span>Eye Glasses</span>
-                          <span className="ml-auto">10 bids</span>
-                        </div>
-                        <a href="item-single.html" className="btn btn-bid">
-                          Submit a Bid
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                    )
+                  )}
                 </div>
               </div>
             </div>
