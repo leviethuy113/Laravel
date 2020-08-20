@@ -134,9 +134,13 @@ const EditPosts = ({ onAdd, posts, cateposts }) => {
                 name="catepost"
                 ref={register({ required: true })}
               >
-                <option selected></option>
+                <option></option>
                 {cateposts.map(({ id, name }, index) => (
-                  <option key={index} value={name}>
+                  <option
+                    selected={post.catepost == name ? true : false}
+                    key={index}
+                    value={name}
+                  >
                     {name}
                   </option>
                 ))}

@@ -37,12 +37,17 @@ const DetailProduct = ({ products }) => {
               <div className="col-lg-3 order-lg-2">
                 <div className="side-box mb-4">
                   <p>
-                    Price:{" "}
-                    <strong className="text-black">${product.price}</strong>{" "}
+                    Danh mục :{" "}
+                    <strong className="text-black">{product.category}</strong>{" "}
+                    <br />
+                    Giá :{" "}
+                    <strong className="text-black">
+                      {product.price} vnđ
+                    </strong>{" "}
                     <br />
                     Sale:{" "}
                     <strong className="text-black">
-                      ${product.price_sale}
+                      {product.price_sale} vnđ
                     </strong>
                   </p>
                   <form action="#">

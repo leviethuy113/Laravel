@@ -236,7 +236,11 @@ const EditProduct = ({ onAdd, products, categories }) => {
               <option></option>
 
               {categories.map(({ id, name }, index) => (
-                <option selected key={index} value={name}>
+                <option
+                  selected={product.category == name ? true : false}
+                  key={index}
+                  value={name}
+                >
                   {name}
                 </option>
               ))}
